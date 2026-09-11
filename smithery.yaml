@@ -1,0 +1,45 @@
+# Smithery configuration file: https://smithery.ai/docs/config#smitheryyaml
+
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema des options de configuration du serveur MCP.
+    type: object
+    properties:
+      X402_BASE_URL:
+        type: string
+        description: "Base de l'API payante (défaut : https://testraptor.com)."
+      X402_NETWORK:
+        type: string
+        description: "Réseau Solana : mainnet ou devnet (défaut : mainnet)."
+      X402_PAYER_KEY_B64:
+        type: string
+        description: "Wallet payeur Solana (secret key 64 octets, base64), financé en USDC. Facultatif si X402_CREDIT_TOKEN est fourni."
+      X402_CREDIT_TOKEN:
+        type: string
+        description: "Jeton de crédit prépayé (débit sans transaction Solana). Facultatif si X402_PAYER_KEY_B64 est fourni."
+      X402_TRUSTED_PAYTO:
+        type: string
+        description: "Verrouille le destinataire du paiement (recommandé : 84uuBKFPR5rYMCrJQkW5unKUebozV1xwdY5UPxBWyFvr)."
+      X402_FACILITATOR_URL:
+        type: string
+        description: "Facilitateur x402 (défaut : https://x402.dexter.cash)."
+      X402_RPC_URL:
+        type: string
+        description: "RPC Solana de secours pour le blockhash (défaut : mainnet-beta public)."
+  commandFunction:
+    # Fonction qui produit la commande CLI pour démarrer le MCP sur stdio.
+    |-
+    config => ({ command: 'npx', args: ['-y', 'testraptor-x402-mcp'], env: {
+      X402_BASE_URL: config.X402_BASE_URL || 'https://testraptor.com',
+      X402_NETWORK: config.X402_NETWORK || 'mainnet',
+      X402_PAYER_KEY_B64: config.X402_PAYER_KEY_B64 || '',
+      X402_CREDIT_TOKEN: config.X402_CREDIT_TOKEN || '',
+      X402_TRUSTED_PAYTO: config.X402_TRUSTED_PAYTO || '',
+      X402_FACILITATOR_URL: config.X402_FACILITATOR_URL || 'https://x402.dexter.cash',
+      X402_RPC_URL: config.X402_RPC_URL || ''
+    }})
+  exampleConfig:
+    X402_BASE_URL: https://testraptor.com
+    X402_NETWORK: mainnet
+    X402_TRUSTED_PAYTO: 84uuBKFPR5rYMCrJQkW5unKUebozV1xwdY5UPxBWyFvr
