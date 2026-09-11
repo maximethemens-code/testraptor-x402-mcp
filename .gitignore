@@ -1,0 +1,12 @@
+# Dépendances
+node_modules/
+
+# Secrets / clés privées — ne JAMAIS versionner
+.env
+.env.*
+!*.example
+*.png
+
+# Logs & temporaires
+*.log
+.DS_Store
