@@ -7,5 +7,5 @@
   "description": "Vérification TLS, monitoring de disponibilité et captures d'écran payés à l'unité (x402, USDC/Solana) — sans compte ni clé API.",
   "long_description": "Serveur MCP exposant les API payantes de TestRaptor en paiement à l'unité x402 (USDC sur Solana, gas sponsorisé). Cinq outils : certs_check_now (0,002 $), heartbeat_create_monitor (0,003 $), pixeldrift_lancer_captures (0,005 $), bundle_check (0,008 $) et credit_topup (montant libre). Deux modes de paiement : wallet payeur (X402_PAYER_KEY_B64) ou crédit prépayé (X402_CREDIT_TOKEN).",
   "maintainers": ["maximethemens-code"],
-  "license": "UNLICENSED"
+  "license": "MIT"
 }
