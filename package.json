@@ -1,0 +1,29 @@
+{
+  "name": "testraptor-x402-mcp",
+  "version": "0.1.1",
+  "description": "Serveur MCP exposant les API payantes TestRaptor (vérification TLS, monitoring, captures d'écran) en paiement à l'unité x402 (USDC/Solana, gas sponsorisé).",
+  "type": "module",
+  "bin": {
+    "testraptor-x402-mcp": "./src/index.js"
+  },
+  "main": "./src/index.js",
+  "files": [
+    "src",
+    "README.md",
+    "glama.json",
+    "smithery.yaml"
+  ],
+  "engines": {
+    "node": ">=22.5"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "@solana/kit": "^5.5.1",
+    "@x402/core": "2.25.0",
+    "@x402/svm": "2.25.0"
+  },
+  "devDependencies": {
+    "@solana/web3.js": "^1.99.0"
+  }
+}
